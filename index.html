@@ -13,34 +13,37 @@
     background-color: #eaf6ff;
     color: #003366;
     text-align: center;
-    overflow: hidden;
+    box-sizing: border-box;
   }
   h1 {
     color: #005c99;
-    font-size: 2.5em;
-    margin: 10px 0;
+    font-size: 1.8em;
+    margin: 5px 0;
   }
   canvas {
     display: block;
     background-color: #ffffff;
-    width: 100%;
-    height: 60vh;
+    width: 95vw;
+    height: 40vh;
+    max-width: 760px;
+    margin: 0 auto;
     border: 2px solid #3399ff;
   }
   .controls, .info {
-    margin-top: 10px;
+    margin-top: 5px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 6px;
+    font-size: 0.9em;
   }
   button, select {
     background-color: #3399ff;
     color: #ffffff;
     border: none;
-    padding: 10px 14px;
-    font-size: 1em;
-    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 0.9em;
+    border-radius: 6px;
     cursor: pointer;
     font-weight: bold;
   }
@@ -48,33 +51,33 @@
     background-color: #66b3ff;
   }
   .info span {
-    margin: 6px 10px;
-    font-size: 1.2em;
+    margin: 4px 8px;
+    font-size: 1em;
     font-weight: bold;
   }
   .nounType {
-    font-size: 1.4em;
+    font-size: 1.2em;
     font-weight: bold;
     color: #0066cc;
     display: block;
-    margin-top: 10px;
+    margin-top: 5px;
   }
   #feedback {
     display: block;
-    margin: 10px 0;
-    font-size: 1.4em;
+    margin: 6px 0;
+    font-size: 1.2em;
     font-weight: bold;
     color: #005c99;
-    min-height: 32px;
+    min-height: 28px;
   }
   #instructions {
-    max-width: 100%;
-    margin: 10px auto;
+    max-width: 95vw;
+    margin: 5px auto;
     background-color: #d0eaff;
-    padding: 10px;
-    border-radius: 8px;
-    font-size: 1em;
-    line-height: 1.4em;
+    padding: 8px;
+    border-radius: 6px;
+    font-size: 0.9em;
+    line-height: 1.3em;
   }
 </style>
 </head>
@@ -87,7 +90,7 @@
 <canvas id="gameCanvas"></canvas>
 <div class="controls">
   <select id="timerSelect">
-    <option value="30"⏱️ 30s</option>
+    <option value="30">⏱️ 30s</option>
     <option value="60" selected>⏱️ 1 min</option>
     <option value="90">⏱️ 1:30</option>
     <option value="120">⏱️ 2 min</option>
@@ -111,11 +114,12 @@
 <script>
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
-
 function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight * 0.6;
-  ctx.font = "bold 24px Arial";
+  const w = canvas.clientWidth;
+  const h = canvas.clientHeight;
+  canvas.width = w;
+  canvas.height = h;
+  ctx.font = "bold 20px Arial";
 }
 window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
